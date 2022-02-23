@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Hypnose</title>
+
+    <link rel="stylesheet" href="css/styles.css" />
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.2.4/gsap.min.js"></script>
+
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/108/three.min.js"
+        integrity="sha256-3mBEX8I0uMLF7+AUjJeTCelosuorzYpqwBMBPDTyQqY=" crossorigin="anonymous"></script>
+
+    <script src="/js/hover-effect.umd.js"></script>
+
+</head>
+
+<body>
+
+    <nav>
+        <h1 class="brand heading__item pad-text-main">Home</h1>
+        <ul class="nav__social flex-1">
+            <li class="heading__item"><img src="/img/facebook-fill.png" class="icon"/></li>
+            <li class="heading__item"><img src="/img/twitter-fill.png" class="icon"/></li>
+            <li class="heading__item"><img src="/img/instagram-fill.png" class="icon"/></li>
+        </ul>
+        <div class="search flex-1 heading__item">
+            <img src="/img/search-line.png" class="icon"/>
+        </div>
+
+        <div class="menutoggle heading__item" id="menu-toggle">
+            <img src="/img/menu-line.png" class="icon">
+        </div>
+
+        <div class="nav__menu" id="nav-menu">
+            <div class="nav__close" id="nav-close">
+                <img src="/img/close-line.png" class="icon"/>
+            </div>
+
+
+            <ul class="nav__list">
+                <li class="nav__item"><a href="#" class="nav__link">Home</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">About</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Tickets</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Merch</a></li>
+                <li class="nav__item"><a href="#" class="nav__link">Photos</a></li>
+
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+
+        <div class="title">
+            <div>
+                <h1>Hypnose</h1><h1>
+                <h1>music<span style="color: #fcde00;">.</span></h1>
+            </div>
+
+        </div>
+
+        <div class="more-details">
+            <div>
+                <a class="link" href="#">
+                    Buy Tickets
+                </a>
+            </div>
+        </div>
+
+        <div class="image__container">
+            <p>Dancing and swirling to the hypnotic rhythm.</p>
+            <div class="image"></div>
+
+        </div>
+        
+        <div class="more-details-mobile">
+            <div>
+                <a class="link" href="#">
+                    Buy Tickets
+                </a>
+            </div>
+        </div>
+
+    </main>
+</body>
+<script>
+
+    var hoverAnimation = new hoverEffect({
+        parent: document.querySelector('.image'),
+        intensity: 0.3,
+        image1: '/img/hypnose1.jpg',
+        image2: '/img/hypnose2.jpg',
+        displacementImage: '/img/diss.png',
+        imagesRatio: 4 / 3
+
+    });
+
+
+    // animate
+    gsap.from('.heading__item', {opacity: 0, duration: 1, delay : 1, stagger: 0.1, y: -30});
+    gsap.from('.title', {opacity: 0, duration: 1.2, delay : 1.5, y: -30});
+    gsap.from('.image__container', {opacity: 0, duration: 1.2, delay : 1.7, y: -50});
+    gsap.from('.more-details', {opacity: 0, duration: 1.2, delay : 1.7, y: -50});
+
+    // click on the hamburger menu
+    var hamburger = document.getElementById('menu-toggle');
+    var logo = document.querySelector('.brand');
+
+    hamburger.addEventListener('click', function(){
+        var navMenu = document.getElementById('nav-menu');
+        navMenu.style.display = 'flex';
+        logo.style.transform = null;
+        gsap.from('.nav__item', { opacity: 0, duration: 1, stagger:0.2, y: -50 })
+
+    });
+    
+    var close = document.getElementById('nav-close');
+    close.addEventListener('click', function(){
+
+        var navMenu = document.getElementById('nav-menu');
+        navMenu.style.display = 'none';
+    })
+
+</script>
+</html>
